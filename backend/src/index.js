@@ -12,7 +12,7 @@ dotenv.config();
 app.use(express.json());
 app.use(
   cors({
-    origin: "http://localhost:5173" || process.env.FRONTEND_URL,
+    origin: process.env.FRONTEND_URL,
     credentials: true,
   })
 );
@@ -24,6 +24,8 @@ connectDb();
 
 app.use("/api", bookRoutes);
 app.use("/auth", authRoutes);
+
+
 
 app.listen(`${Port}`, () => {
   console.log(`Server is running on Port ${Port}`);
