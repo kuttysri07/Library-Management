@@ -5,20 +5,18 @@ import bookRoutes from "./routes/bookRoute.js";
 import authRoutes from "./routes/authRoutes.js";
 import cookieParser from "cookie-parser";
 import dotenv from "dotenv";
-import cronjob from "./Mailer/cronjob.js"
-
+import cronjob from "./Mailer/cronjob.js";
 
 const app = express();
-
+dotenv.config();
 app.use(express.json());
 app.use(
   cors({
-    origin: "http://localhost:5173",
+    origin: "http://localhost:5173" || process.env.FRONTEND_URL,
     credentials: true,
   })
 );
 app.use(cookieParser());
-dotenv.config();
 
 const Port = process.env.PORT;
 
