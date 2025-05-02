@@ -1,9 +1,12 @@
 import mongoose from "mongoose";
 import { bookModel } from "./src/schema/bookSchema.js";
+import env from "dotenv"
+
+env.config();
 
 export const connectDb = () => {
   mongoose
-    .connect("mongodb://localhost:27017/Library")
+  .connect(`${process.env.MONGOURL}/Library`)
     .then(() => console.log("Database connected successfully")) // Ensure it's a function call
     .catch((err) => console.log(`Connection error: ${err.message}`)); // Define 'err' parameter
 };

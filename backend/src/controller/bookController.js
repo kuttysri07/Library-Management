@@ -37,7 +37,7 @@ export const fetchAllBooks = async (req, res) => {
     const limitNumber = parseInt(limit, 10) || 10;
     const skip = (pageNumber - 1) * limitNumber;
 
-    const totalBooks = await bookModel.countDocuments(query); // Total books count
+    const totalBooks = await bookModel.countDocuments(query); 
     const fetchedData = await bookModel.find(query).skip(skip).limit(limitNumber).lean();
 
     if (fetchedData.length === 0) {
